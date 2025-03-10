@@ -1,0 +1,54 @@
+<form #productForm="ngForm">
+  <div class="card">
+      <div class="card-header bg-primary">
+          Update Purchase
+      </div>
+      <div class="card-body">
+          <div class="row">
+              <div class="col-3">
+                  <label for="">Invoice Number</label>
+                  <input type="text" class="form-control" [(ngModel)]="purchaseDetails.invoiceNumber" required name="invoiceNumber" #invoiceNumber="ngModel">
+                  <div *ngIf="invoiceNumber.invalid && invoiceNumber.touched" class="text-danger">
+                      *Invoice No is required
+                  </div>
+              </div>
+              <div class="col-3">
+                  <label for="">Supplier Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="purchaseDetails.supplierName" required name="supplierName" #supplierName="ngModel">
+                  <div *ngIf="supplierName.invalid && supplierName.touched" class="text-danger">
+                      *Supplier Name is required
+                  </div>
+              </div>
+              <div class="col-3">
+                  <label for="">Purchase Date</label>
+                  <input type="date" class="form-control" [(ngModel)]="purchaseDetails.purchaseDate" name="purchaseDate" >
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-3">
+                <label for="">Quantity</label>
+                <input type="number" class="form-control" [(ngModel)]="purchaseDetails.quantity" required name="quantity" #quantity="ngModel">
+                <div *ngIf="quantity.invalid && quantity.touched" class="text-danger">
+                    *Quantity is required
+                </div>
+              </div>
+              <div class="col-3">
+                  <label for="">Invoice Amount</label>
+                  <input type="number" class="form-control" [(ngModel)]="purchaseDetails.invoiceAmount" required name="invoiceAmount" #invoiceAmount="ngModel">
+                  <div *ngIf="invoiceAmount.invalid && invoiceAmount.touched" class="text-danger">
+                      *Invoice Amount is required
+                  </div>
+              </div>
+          </div>
+          <div class="row pt-3">
+              <div class="col-3 text-end">
+                  <button class="btn btn-sm btn-secondary" routerLink="/purchase-list">Go To List</button>
+              </div>
+              <div class="col-3 text-center">
+                  <button class="btn btn-sm btn-success" (click)="updatePurchase()" [disabled]="productForm.invalid">Update Purchase</button>
+              </div> 
+          </div>
+      </div>
+  </div>
+  </form>
+  

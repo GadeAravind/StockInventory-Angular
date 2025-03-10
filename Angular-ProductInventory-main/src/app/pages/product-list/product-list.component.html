@@ -1,0 +1,38 @@
+<body>
+<div class="row">
+    <div class="col-12 text-end">
+        <button class="btn btn-sm btn-success" routerLink="/new-product" >New Product</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 mb-4" *ngFor="let product of productList">
+        <div class="profile-card-4 text-center">
+            <div class="profile-content">
+                <div class="profile-name">  
+                    <p>{{product.productName}}</p>
+                </div>
+                <div class="profile-description">{{product.categoryName}}</div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="profile-overview">
+                            <p>Date</p>
+                            <p>{{product.createdDate | date:'dd-MMM-yy'}}</p></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="profile-overview">
+                            <p>Price</p>
+                            <p>{{product.price}}</p></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="profile-overview">
+                            <p>Details</p>
+                            <p>{{product.productDetails}}</p></div>
+                    </div>
+                </div>
+                <button class="btn btn-md btn-primary mt-2 me-2" style="font-size:16px;" (click)="editProduct(product.productId)">Edit</button>
+                <button class="btn btn-sm btn-danger mt-2 " (click)="deleteProduct(product.productId)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

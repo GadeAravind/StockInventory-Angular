@@ -1,0 +1,70 @@
+<form #productForm="ngForm">
+<div class="card">
+    <div class="card-header bg-primary">
+        New Sale
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <label for="">Invoice Number</label>
+                <input type="text" class="form-control" [(ngModel)]="saleObj.invoiceNumber" required name="invoiceNumber" #invoiceNumber="ngModel">
+                <div *ngIf="invoiceNumber.invalid && invoiceNumber.touched" class="text-danger">
+                    *Invoice No is required
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="">Customer Name</label>
+                <input type="text" class="form-control" [(ngModel)]="saleObj.customerName" required name="customerName" #customerName="ngModel">
+                <div *ngIf="customerName.invalid && customerName.touched" class="text-danger">
+                    *Customer Name is required
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="">Mobile Number</label>
+                <input type="text" class="form-control" [(ngModel)]="saleObj.mobileNo" required name="mobileNo" #mobileNo="ngModel">
+                <div *ngIf="mobileNo.invalid && mobileNo.touched" class="text-danger">
+                    *Mobile Number is required
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="">Sale Date</label>
+                <input type="date" class="form-control" [(ngModel)]="saleObj.saleDate" name="saleDate" >
+            </div>
+             
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="">Select Product</label>
+                <select class="form-control" [(ngModel)]="saleObj.productId" name="productId" (change)="checkStock()">
+                    <option value="">Select Product</option>
+                    <option *ngFor="let item of productList" [value]="item.productId"> {{item.productName}}</option>
+                </select> 
+            </div>
+            <div class="col-3">
+                <label for="">Quantity</label>
+                <input type="number" class="form-control" [(ngModel)]="saleObj.quantity" required name="quantity" #quantity="ngModel">
+                <div *ngIf="quantity.invalid && quantity.touched" class="text-danger">
+                    *Quantity is required
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="">Total Amount</label>
+                <input type="number" class="form-control" [(ngModel)]="saleObj.totalAmount" required name="totalAmount" #totalAmount="ngModel">
+                <div *ngIf="totalAmount.invalid && totalAmount.touched" class="text-danger">
+                    *Total Amount is required
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-3 text-end">
+                <button class="btn btn-sm btn-secondary" routerLink="/sale-list">Go To List</button>
+            </div>
+            <div class="col-3 text-center">
+                <button class="btn btn-sm btn-success" (click)="onSave()" [disabled]="productForm.invalid">Save Sale</button>
+            </div> 
+        </div>
+    </div>
+</div>
+</form>

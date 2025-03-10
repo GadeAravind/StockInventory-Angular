@@ -1,0 +1,53 @@
+<form #productForm="ngForm">
+<div class="card">
+    <div class="card-header bg-primary">
+        New Product
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-3">
+                <label for="">Product Name</label>
+                <input type="text" class="form-control" [(ngModel)]="productObj.productName" required name="productName" #productName="ngModel">
+                <div *ngIf="productName.invalid && productName.touched" class="text-danger">
+                    *Product Name is required
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="">Category Name</label>
+                <input type="text" class="form-control" [(ngModel)]="productObj.categoryName" required name="categoryName" #categoryName="ngModel">
+                <div *ngIf="categoryName.invalid && categoryName.touched" class="text-danger">
+                    *Category Name is required
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="">Created Date</label>
+                <input type="date" class="form-control" [(ngModel)]="productObj.createdDate" name="createdDate" >
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="">Price</label>
+                <input type="number" class="form-control" [(ngModel)]="productObj.price" required name="price" #price="ngModel">
+                <div *ngIf="price.invalid && price.touched" class="text-danger">
+                    *Price is required
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="">Product Details</label>
+                <input type="text" class="form-control" [(ngModel)]="productObj.productDetails" required name="productDetails" #productDetails="ngModel">
+                <div *ngIf="productDetails.invalid && productDetails.touched" class="text-danger">
+                    *Product Details is required
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-3 text-end">
+                <button class="btn btn-sm btn-secondary" routerLink="/product-list">Go To List</button>
+            </div>
+            <div class="col-3 text-center">
+                <button class="btn btn-sm btn-success" (click)="onSave()" [disabled]="productForm.invalid">Save Product</button>
+            </div> 
+        </div>
+    </div>
+</div>
+</form>
